@@ -75,12 +75,26 @@ WSGI_APPLICATION = 'sccapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nurione',
+        'USER': 'django',
+        'PASSWORD': 'django#@1',
+        'HOST': '14.0.82.14',
+        'PORT': '3306',
+	'OPTIONS':{
+		   'charset':'latin1'},
     }
 }
+
 
 
 # Internationalization
