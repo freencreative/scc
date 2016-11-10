@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apitest',
+    'nurione',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,13 +86,14 @@ WSGI_APPLICATION = 'sccapi.wsgi.application'
 DATABASES = {
     'default': {
 	'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nurione',
+        'NAME': 'kunhoserver',
         'USER': 'django',
         'PASSWORD': 'django#@1',
         'HOST': '14.0.82.14',
         'PORT': '3306',
 	'OPTIONS':{
-		   'charset':'latin1'},
+		   'charset':'euckr',
+                   'use_unicode' : True, },
     }
 }
 
@@ -112,8 +114,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+#DEFAULT_CHARSET = 'euc-kr'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')

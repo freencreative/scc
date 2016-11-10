@@ -1,0 +1,8 @@
+    <div class="post">
+        {% if post.created %}
+            <div class="date">
+               <h1> {{ post.title }} </h1>
+            </div>
+        {% endif %}
+        <p>{{ post.content|safe }}</p>
+    </div>

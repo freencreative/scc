@@ -118,6 +118,37 @@ class MstayCoOrderCheck(models.Model):
     w_where = models.CharField(max_length=10)
     deheng = models.IntegerField()
 
+    def __str__(self):
+    	return self.room_name
+
     class Meta:
         managed = False
         db_table = 'mstay_co_order_check'
+
+class TcEntries(models.Model):
+    blogid = models.IntegerField()
+    userid = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
+    draft = models.IntegerField()
+    visibility = models.IntegerField()
+    starred = models.IntegerField()
+    category = models.IntegerField()
+    title = models.CharField(max_length=255)
+    slogan = models.CharField(max_length=255)
+    content = models.TextField()
+    contentformatter = models.CharField(db_column='contentFormatter', max_length=32)  # Field name made lowercase.
+    contenteditor = models.CharField(db_column='contentEditor', max_length=32)  # Field name made lowercase.
+    location = models.CharField(max_length=255)
+    password = models.CharField(max_length=32, blank=True, null=True)
+    acceptcomment = models.IntegerField(db_column='acceptComment')  # Field name made lowercase.
+    accepttrackback = models.IntegerField(db_column='acceptTrackback')  # Field name made lowercase.
+    published = models.IntegerField()
+    created = models.IntegerField()
+    modified = models.IntegerField()
+    comments = models.IntegerField()
+    trackbacks = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'tc_Entries'
+        unique_together = (('blogid', 'id', 'draft', 'category', 'published'),)

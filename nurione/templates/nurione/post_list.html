@@ -1,0 +1,17 @@
+{% extends 'nurione/base.html' %}
+
+{% block content %}
+
+   {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        {{ post.published|date:"Y m d H i s" }}
+                    </div>
+                    <h1><a href="{% url 'nurione:post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+			{% autoescape off %}
+			{{ post.content|truncatechars:20 }}
+			{% endautoescape %}
+                </div>
+   {% endfor %}
+
+{% endblock content %}
