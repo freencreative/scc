@@ -85,6 +85,18 @@ WSGI_APPLICATION = 'sccapi.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'diodeo',
+        'USER': 'django',
+        'PASSWORD': 'django#@1',
+        'HOST': '14.0.82.14',
+        'PORT': '3306',
+        'OPTIONS':{
+                   'charset':'euckr',
+                   'use_unicode' : True, },
+
+    },
+    'nurione' : {
 	'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kunhoserver',
         'USER': 'django',

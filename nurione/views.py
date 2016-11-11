@@ -17,11 +17,12 @@ def post_new(request):
 		return render(request, 'nurione/post_edit.html', {'form' : form})
 
 def post_list(request):
-	posts = TcEntries.objects.filter(created__startswith='12').order_by('-created')[:5]
+	posts = TcEntries.objects.using('nurione').filter(created__startswith='12').order_by('-created')[:5]
 	return render(request, 'nurione/post_list.html', {'posts' : posts})
 
 def post_detail(request, pk):
-	post = get_object_or_404(TcEntries, pk=pk)
+	#post = get_object_or_404(TcEntries, pk=pk)
+	post = TcEntries.objects.using('nurione').get(pk=pk)
 	return render(request, 'nurione/post_detail.html', {'post' : post})
 
 
