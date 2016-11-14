@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apitest',
     'nurione',
+    'polls',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,7 +107,12 @@ DATABASES = {
 	'OPTIONS':{
 		   'charset':'euckr',
                    'use_unicode' : True, },
+    },
+    'polls': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+
 }
 
 
