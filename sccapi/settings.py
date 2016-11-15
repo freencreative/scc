@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'sccapi.wsgi.application'
 #}
 
 DATABASES = {
-    'default': {
+    'diodeo': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'diodeo',
         'USER': 'django',
@@ -108,7 +108,7 @@ DATABASES = {
 		   'charset':'euckr',
                    'use_unicode' : True, },
     },
-    'polls': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
