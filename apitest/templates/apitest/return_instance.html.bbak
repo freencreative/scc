@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+<html>
+<head>
+<script type="text/javascript" src="{% static 'apitest/vkbeautify.js' %}"></script>
+</head>
+<body>
+<script>
+document.write(vkbeautify.json("{{ res_data.data }}", 4));
+</script>
+</body>
+</html>

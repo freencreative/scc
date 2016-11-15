@@ -9,6 +9,7 @@ import json
 import base64
 import urllib
 from Crypto.Hash import SHA, HMAC
+from django.http import JsonResponse
 
 API_SERVER = "p2.sccservice.com:4000"
 
@@ -26,7 +27,7 @@ def return_instance(request):
 	else:
 		message = 'you input wrong / empty data'
 		return HttpResponse(message)
-	return render(request, 'apitest/return_instance.html', {'apikey':new_apikey, 'secretkey':new_secretkey})
+	return render(request, 'apitest/return_instance.html', {'apikey':new_apikey, 'secretkey':new_secretkey, 'res_data':res_data})
 
 def sccapi_get(request):
         dict_param = {"userApiUrl": "/api/cl/vm"}
@@ -42,9 +43,8 @@ def sccapi_get(request):
         dict_param["userApiSignature"] = create_signature(dict_param, str(API_SECRETKEY))
         url = "http://%s/userapi" % API_SERVER
         res_data = req(url, dict_param)
-#        return HttpResponse(json.dumps(res_data, indent=4))
-	return render(request, 'apitest/return_instance.html', {'apikey':API_APIKEY, 'secretkey':API_SECRETKEY, 'res_data':res_data})
-
+        return HttpResponse(json.dumps(res_data, indent=4), content_type="application/json")
+#	return render(request, 'apitest/return_instance.html', {'apikey':API_APIKEY, 'secretkey':API_SECRETKEY, 'res_data':res_data})
 
 def create_signature(dict_param, secret_key):
         list_param = []
@@ -74,5 +74,4 @@ def req(url, dict_param):
                 res_data["code"] = 400
                 res_data["data"] = repr(e)
         return res_data
-
  
